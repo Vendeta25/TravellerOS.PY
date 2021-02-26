@@ -1,0 +1,4 @@
+{
+    "djangointellisense.debugMessages": true,
+    "emmet.includeLanguages": {"django-html": "html"}
+}
