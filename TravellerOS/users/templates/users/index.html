@@ -1,0 +1,27 @@
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<h1>This is the home screen, where users can register or login.</h1>
+{% if messages %}
+    {% for message in messages%}
+        <div class="alert alert-{{ message.tags}}">
+            {{message}}
+        </div>
+    {% endfor%}
+{% endif%}
+
+{% if user.is_authenticated%}
+    <a class="btn btn-primary" href="/admin">User Administration</a>
+    <a class="btn btn-primary" href="/logout">Logout</a>
+{%else%}
+    <a class="btn btn-primary" href="/register">Register</a>
+    <a class="btn btn-primary" href="/login">Login</a>
+{%endif%}
+
+{% for ship in ships %}
+    {{ship.ship_name}}
+{% endfor %}
