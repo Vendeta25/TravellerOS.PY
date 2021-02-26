@@ -1,0 +1,45 @@
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="{% url 'index' %}">TravellerOS</a>
+                </div>
+                    <ul class="nav navbar-nav">
+                            {% if user.is_authenticated%}
+                                <li><a href="/ship/register">Register a ship</a></li>
+                                <li><a href="/ship/join">Sign up for a ship</a></li>
+                            {%endif%}
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        {% if user.is_authenticated%}
+                            <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                        {%else%}
+                            <li><a href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                            <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        {%endif%}
+                    </ul>
+            </div>
+        </nav>
+    </head>
+
+    <body>
+        {% if messages %}
+            {% for message in messages%}
+                <div class="alert alert-{{ message.tags}}">
+                    {{message}}
+                </div>
+            {% endfor%}
+        {% endif%}
+        
+        {% block content %}{% endblock content %}
+    </body>
+</html>

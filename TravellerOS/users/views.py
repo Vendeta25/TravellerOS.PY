@@ -11,13 +11,16 @@ def register(request):
             form.save()
             username = form.cleaned_data.get('username')
             messages.success(request, f'User registered as {username} successfully. Enter your credentials to login.')
-            return redirect('')
+            return redirect('index')
     else:
         form = UserRegisterForm()
     return render(request, 'users/register.html', {'form': form})
 
 def index(request):
-    ships = request.user.ship_set.all()
+    if request.user.is_authenticated:
+        ships = request.user.ship_set.all()
+    else:
+        ships = []
     context = {
         'ships': ships 
     }
