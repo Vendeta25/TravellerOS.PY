@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+    {% block content %}        
+        <div class="content-section">
+            <table class="table table-striped" style="max-width: 50%;">
+                <thead>
+                    <tr>
+                        <th scope="col">Crew Member</th>
+                    </tr>
+                </thead>
+                {% for character in characters %}
+                    <tr><td>{{character.name}}</td></tr>
+                {% endfor %}
+            </table>
+        </div>   
+{% endblock content %}

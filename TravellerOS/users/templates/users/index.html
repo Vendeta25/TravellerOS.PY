@@ -11,7 +11,7 @@
                     </tr>
                 </thead>
                 {% for ship in ships %}
-                <tr><td> {{ship.ship_name}}</td></tr>
+                <tr><td> <a href={% url 'ship_index' ship.id%}>{{ship.ship_name}}</a></td></tr>
                 {% endfor %}
             </table>
    
